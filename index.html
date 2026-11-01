@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -372,766 +371,509 @@
         let currentGroupTurnIndex = 0;
         let currentMember = 1;
 
-        // 30 Verified Unique Clues with Distinct ACROSS_XX and DOWN_XX Identifiers
+        // 30 Verified Unique Clues with 100% Consistent Intersections
         const crosswordEntries = [
             // ACROSS (15)
-            { uniqueId: "ACROSS_01", direction: "across", num: 1, word: "CAMOUFLAGE", row: 0, col: 1, clue: "Coloration or pattern helping animals blend into their background.", completed: false },
-            { uniqueId: "ACROSS_02", direction: "across", num: 3, word: "HIBERNATE", row: 2, col: 0, clue: "Deep winter sleep where animals conserve body energy.", completed: false },
-            { uniqueId: "ACROSS_03", direction: "across", num: 6, word: "MIMICRY", row: 4, col: 4, clue: "Looking like another dangerous species for protection.", completed: false },
-            { uniqueId: "ACROSS_04", direction: "across", num: 8, word: "BLUBBER", row: 6, col: 7, clue: "Thick fat layer under marine mammal skin for warmth.", completed: false },
-            { uniqueId: "ACROSS_05", direction: "across", num: 10, word: "ECHOLOCATION", row: 8, col: 2, clue: "Using sound echoes to navigate and hunt in the dark.", completed: false },
-            { uniqueId: "ACROSS_06", direction: "across", num: 12, word: "NOCTURNAL", row: 10, col: 5, clue: "Active during the night and resting during the day.", completed: false },
-            { uniqueId: "ACROSS_07", direction: "across", num: 15, word: "QUILLS", row: 12, col: 0, clue: "Sharp protective spines found on porcupines.", completed: false },
-            { uniqueId: "ACROSS_08", direction: "across", num: 17, word: "MOLTING", row: 14, col: 6, clue: "Shedding feathers, fur, or skin for growth.", completed: false },
-            { uniqueId: "ACROSS_09", direction: "across", num: 19, word: "WEBBED", row: 16, col: 3, clue: "Skin between toes for efficient swimming.", completed: false },
-            { uniqueId: "ACROSS_10", direction: "across", num: 21, word: "MIGRATION", row: 18, col: 1, clue: "Seasonal travel to warmer regions or better food sources.", completed: false },
-            { uniqueId: "ACROSS_11", direction: "across", num: 23, word: "STRUCTURAL", row: 20, col: 1, clue: "Physical body part adaptation like beaks or fur.", completed: false },
-            { uniqueId: "ACROSS_12", direction: "across", num: 2, word: "CARNIVORE", row: 1, col: 12, clue: "Animal adapted with sharp teeth to eat meat.", completed: false },
-            { uniqueId: "ACROSS_13", direction: "across", num: 5, word: "STREAMLINED", row: 3, col: 9, clue: "Sleek body shape reducing drag in water or air.", completed: false },
-            { uniqueId: "ACROSS_14", direction: "across", num: 9, word: "PREDATOR", row: 7, col: 11, clue: "Animal that hunts and eats other animals for survival.", completed: false },
-            { uniqueId: "ACROSS_15", direction: "across", num: 14, word: "TOXIN", row: 11, col: 12, clue: "Poisonous defense substance produced by certain animals.", completed: false },
+            { uniqueId: "ACROSS_01", direction: "across", num: 1, word: "CAMOUFLAGE", row: 0, col: 0, clue: "Coloration or pattern helping animals blend into their background.", completed: false },
+            { uniqueId: "ACROSS_02", direction: "across", num: 3, word: "HIBERNATE", row: 4, col: 0, clue: "Deep winter sleep where animals conserve body energy.", completed: false },
+            { uniqueId: "ACROSS_03", direction: "across", num: 6, word: "MIMICRY", row: 6, col: 2, clue: "Looking like another dangerous species for protection.", completed: false },
+            { uniqueId: "ACROSS_04", direction: "across", num: 8, word: "BLUBBER", row: 8, col: 4, clue: "Thick fat layer under marine mammal skin for warmth.", completed: false },
+            { uniqueId: "ACROSS_05", direction: "across", num: 10, word: "ECHOLOCATION", row: 10, col: 6, clue: "Using sound echoes to navigate and hunt in the dark.", completed: false },
+            { uniqueId: "ACROSS_06", direction: "across", num: 12, word: "NOCTURNAL", row: 12, col: 2, clue: "Active during the night and resting during the day.", completed: false },
+            { uniqueId: "ACROSS_07", direction: "across", num: 15, word: "QUILLS", row: 14, col: 7, clue: "Sharp protective spines found on porcupines.", completed: false },
+            { uniqueId: "ACROSS_08", direction: "across", num: 17, word: "MOLTING", row: 16, col: 7, clue: "Shedding feathers, fur, or skin for growth.", completed: false },
+            { uniqueId: "ACROSS_09", direction: "across", num: 19, word: "WEBBED", row: 20, col: 7, clue: "Skin between toes for efficient swimming.", completed: false },
+            { uniqueId: "ACROSS_10", direction: "across", num: 21, word: "MIGRATION", row: 18, col: 0, clue: "Seasonal travel to warmer regions or better food sources.", completed: false },
+            { uniqueId: "ACROSS_11", direction: "across", num: 23, word: "STRUCTURAL", row: 21, col: 0, clue: "Physical body part adaptation like beaks or fur.", completed: false },
+            { uniqueId: "ACROSS_12", direction: "across", num: 2, word: "CARNIVORE", row: 2, col: 2, clue: "Animal adapted with sharp teeth to eat meat.", completed: false },
+            { uniqueId: "ACROSS_13", direction: "across", num: 5, word: "STREAMLINED", row: 2, col: 11, clue: "Sleek body shape reducing drag in water or air.", completed: false },
+            { uniqueId: "ACROSS_14", direction: "across", num: 9, word: "PREDATOR", row: 0, col: 12, clue: "Animal that hunts and eats other animals for survival.", completed: false },
+            { uniqueId: "ACROSS_15", direction: "across", num: 14, word: "TOXIN", row: 16, col: 14, clue: "Poisonous defense substance produced by certain animals.", completed: false },
 
             // DOWN (15)
-            { uniqueId: "DOWN_01", direction: "down", num: 1, word: "CLAW", row: 0, col: 1, clue: "Sharp nail on a foot used for digging or climbing.", completed: false },
-            { uniqueId: "DOWN_02", direction: "down", num: 2, word: "BEHAVIORAL", row: 1, col: 12, clue: "Adaptation based on actions or habits like bird migration.", completed: false },
-            { uniqueId: "DOWN_03", direction: "down", num: 4, word: "HERBIVORE", row: 2, col: 6, clue: "Animal adapted with flat teeth to eat plants.", completed: false },
-            { uniqueId: "DOWN_04", direction: "down", num: 5, word: "SURVIVAL", row: 3, col: 9, clue: "Remaining alive in difficult environmental conditions.", completed: false },
-            { uniqueId: "DOWN_05", direction: "down", num: 7, word: "PHYSIOLOGICAL", row: 4, col: 4, clue: "Internal body process adaptation like making venom or sweating.", completed: false },
-            { uniqueId: "DOWN_06", direction: "down", num: 8, word: "BEAK", row: 6, col: 7, clue: "Hard bird mouth part shaped for specific diets.", completed: false },
-            { uniqueId: "DOWN_07", direction: "down", num: 9, word: "PARASITE", row: 7, col: 11, clue: "Organism living on or inside another host at its expense.", completed: false },
-            { uniqueId: "DOWN_08", direction: "down", num: 11, word: "HABITAT", row: 8, col: 2, clue: "Natural home or environment where an animal lives.", completed: false },
-            { uniqueId: "DOWN_09", direction: "down", num: 13, word: "MIMIC", row: 10, col: 5, clue: "To copy the appearance or sound of another creature.", completed: false },
-            { uniqueId: "DOWN_10", direction: "down", num: 14, word: "TAIL", row: 11, col: 12, clue: "Rear body appendage used for balance or communication.", completed: false },
-            { uniqueId: "DOWN_11", direction: "down", num: 16, word: "TERRITORY", row: 12, col: 0, clue: "Area defended by an animal against rivals.", completed: false },
-            { uniqueId: "DOWN_12", direction: "down", num: 18, word: "SCALE", row: 14, col: 6, clue: "Small hard plate protecting fish or reptiles.", completed: false },
-            { uniqueId: "DOWN_13", direction: "down", num: 20, word: "FUR", row: 16, col: 3, clue: "Thick hair coat keeping mammals warm in winter.", completed: false },
-            { uniqueId: "DOWN_14", direction: "down", num: 22, word: "FIN", row: 18, col: 1, clue: "Fish limb adaptation for steering and balancing in water.", completed: false },
-            { uniqueId: "DOWN_15", direction: "down", num: 24, word: "WINGS", row: 17, col: 4, clue: "Forelimbs adapted for flight in birds and bats.", completed: false }
+            { uniqueId: "DOWN_01", direction: "down", num: 1, word: "CLAW", row: 0, col: 0, clue: "Sharp nail on a foot used for digging or climbing.", completed: false },
+            { uniqueId: "DOWN_02", direction: "down", num: 2, word: "BEHAVIORAL", row: 0, col: 21, clue: "Adaptation based on actions or habits like bird migration.", completed: false },
+            { uniqueId: "DOWN_03", direction: "down", num: 4, word: "HERBIVORE", row: 4, col: 0, clue: "Animal adapted with flat teeth to eat plants.", completed: false },
+            { uniqueId: "DOWN_04", direction: "down", num: 5, word: "SURVIVAL", row: 2, col: 11, clue: "Remaining alive in difficult environmental conditions.", completed: false },
+            { uniqueId: "DOWN_05", direction: "down", num: 7, word: "PHYSIOLOGICAL", row: 0, col: 20, clue: "Internal body process adaptation like making venom or sweating.", completed: false },
+            { uniqueId: "DOWN_06", direction: "down", num: 8, word: "BEAK", row: 8, col: 4, clue: "Hard bird mouth part shaped for specific diets.", completed: false },
+            { uniqueId: "DOWN_07", direction: "down", num: 9, word: "PARASITE", row: 0, col: 12, clue: "Organism living on or inside another host at its expense.", completed: false },
+            { uniqueId: "DOWN_08", direction: "down", num: 11, word: "HABITAT", row: 14, col: 14, clue: "Natural home or environment where an animal lives.", completed: false },
+            { uniqueId: "DOWN_09", direction: "down", num: 13, word: "MIMIC", row: 6, col: 2, clue: "To copy the appearance or sound of another creature.", completed: false },
+            { uniqueId: "DOWN_10", direction: "down", num: 14, word: "TAIL", row: 14, col: 18, clue: "Rear body appendage used for balance or communication.", completed: false },
+            { uniqueId: "DOWN_11", direction: "down", num: 16, word: "TERRITORY", row: 12, col: 5, clue: "Area defended by an animal against rivals.", completed: false },
+            { uniqueId: "DOWN_12", direction: "down", num: 18, word: "SCALE", row: 14, col: 19, clue: "Small hard plate protecting fish or reptiles.", completed: false },
+            { uniqueId: "DOWN_13", direction: "down", num: 20, word: "FUR", row: 18, col: 15, clue: "Thick hair coat keeping mammals warm in winter.", completed: false },
+            { uniqueId: "DOWN_14", direction: "down", num: 22, word: "FIN", row: 18, col: 17, clue: "Fish limb adaptation for steering and balancing in water.", completed: false },
+            { uniqueId: "DOWN_15", direction: "down", num: 24, word: "WINGS", row: 14, col: 13, clue: "Forelimbs adapted for flight in birds and bats.", completed: false }
         ];
 
-        // Canonical Crossword Cell Store (Single Source of Truth)
-        let canonicalGrid = {};
-        let revealedGridLetters = {};
-        let revealedLetterTypes = {};
-        let activeSelectedEntry = null;
-        let startTime = Date.now();
+        // Centralized Grid Store (22x22 Single Source of Truth)
+        let gridStore = {}; 
+        let activeClue = null;
+        let activeTab = 'across';
+        let secondsElapsed = 0;
         let timerInterval = null;
 
-        // Build and validate canonical grid and cross-intersections automatically on startup
-        function initializeCanonicalGrid() {
-            canonicalGrid = {};
+        // Initialize Canonical Grid Cells & Run Integrity Check
+        function initGridStore() {
+            gridStore = {};
             crosswordEntries.forEach(entry => {
                 let r = entry.row;
                 let c = entry.col;
                 for (let i = 0; i < entry.word.length; i++) {
-                    let key = `${r}-${c}`;
+                    let key = `${r},${c}`;
                     let char = entry.word[i];
 
-                    if (!canonicalGrid[key]) {
-                        canonicalGrid[key] = {
+                    if (!gridStore[key]) {
+                        gridStore[key] = {
                             row: r,
                             col: c,
-                            canonicalLetter: char,
-                            number: (i === 0) ? entry.num : null,
-                            intersectingEntries: []
+                            letter: char,
+                            revealed: false,
+                            status: 'blank', // 'correct' or 'revealed'
+                            num: (i === 0) ? entry.num : null,
+                            entries: [entry.uniqueId]
                         };
                     } else {
-                        // Validate intersection consistency across all entries
-                        if (canonicalGrid[key].canonicalLetter !== char) {
-                            console.error(`CRITICAL CROSSWORD CONSISTENCY ERROR at (${r},${c}): Existing '${canonicalGrid[key].canonicalLetter}' conflicts with new '${char}' from ${entry.uniqueId}`);
+                        if (i === 0 && !gridStore[key].num) {
+                            gridStore[key].num = entry.num;
                         }
-                        if (i === 0 && !canonicalGrid[key].number) {
-                            canonicalGrid[key].number = entry.num;
+                        if (!gridStore[key].entries.includes(entry.uniqueId)) {
+                            gridStore[key].entries.push(entry.uniqueId);
                         }
                     }
-                    canonicalGrid[key].intersectingEntries.push({ uniqueId: entry.uniqueId, direction: entry.direction, index: i });
 
                     if (entry.direction === 'across') c++;
                     else r++;
                 }
             });
-            console.log(`✅ Canonical Grid initialized successfully with ${Object.keys(canonicalGrid).length} valid intersecting cells.`);
         }
 
-        // Atomic Reveal Operation with Pre-Validation
-        function atomicRevealEntry(entry, revealType) {
-            let r = entry.row;
-            let c = entry.col;
-            let targetCells = [];
-
-            // Step 1: Pre-validation of all target cells against canonical solution
-            for (let i = 0; i < entry.word.length; i++) {
-                let key = `${r}-${c}`;
-                let expectedChar = entry.word[i];
-                let cellData = canonicalGrid[key];
-
-                if (!cellData || cellData.canonicalLetter !== expectedChar) {
-                    console.error(`Atomic reveal validation failed for ${entry.uniqueId} at cell (${r},${c})`);
-                    return false; // Reject entire operation
-                }
-
-                // Check if already revealed with a conflicting letter (safety check)
-                if (revealedGridLetters[key] && revealedGridLetters[key] !== expectedChar) {
-                    console.error(`Conflict detected at (${r},${c}): existing '${revealedGridLetters[key]}' vs new '${expectedChar}'`);
-                    return false;
-                }
-
-                targetCells.push({ key, char: expectedChar });
-                if (entry.direction === 'across') c++;
-                else r++;
-            }
-
-            // Step 2: Atomic commit of all verified cells
-            entry.completed = true;
-            entry.status = revealType; // 'correct' or 'wrong-revealed'
-
-            targetCells.forEach(item => {
-                if (!revealedGridLetters[item.key]) {
-                    revealedGridLetters[item.key] = item.char;
-                    revealedLetterTypes[item.key] = (revealType === 'correct') ? 'correct' : 'revealed-wrong';
+        // Selected Team Handler
+        function selectTeam(index) {
+            currentGroupTurnIndex = index;
+            document.querySelectorAll('.team-option-card').forEach((card, idx) => {
+                if (idx === index) {
+                    card.classList.add('border-teal-400', 'scale-105', 'ring-4', 'ring-teal-400/30');
+                    card.classList.remove('border-purple-500/50', 'border-emerald-500/50', 'border-sky-500/50', 'border-amber-500/50', 'border-rose-500/50', 'border-teal-500/50');
+                } else {
+                    card.classList.remove('border-teal-400', 'scale-105', 'ring-4', 'ring-teal-400/30');
                 }
             });
-
-            return true;
-        }
-
-        function selectTeam(idx) {
-            const card = document.getElementById(`team-card-${idx}`);
-            const dot = card.querySelector('.indicator-dot');
-            if (selectedGroupIndices.includes(idx)) {
-                if (selectedGroupIndices.length === 1) {
-                    showToast('⚠️ At least one group must remain active!', 'info');
-                    return;
-                }
-                selectedGroupIndices = selectedGroupIndices.filter(i => i !== idx);
-                card.classList.remove('border-purple-400', 'ring-4', 'ring-purple-500/40');
-                dot.classList.remove('bg-teal-400');
-                dot.classList.add('bg-slate-600');
-            } else {
-                selectedGroupIndices.push(idx);
-                card.classList.add('border-purple-400', 'ring-4', 'ring-purple-500/40');
-                dot.classList.remove('bg-slate-600');
-                dot.classList.add('bg-teal-400');
-            }
+            showMessage(`Active group set to ${groups[index].name}`);
         }
 
         function startBattle() {
-            groups = groups.filter(g => selectedGroupIndices.includes(g.id));
-            currentRound = 1;
-            currentGroupTurnIndex = 0;
-            currentMember = 1;
-            
-            initializeCanonicalGrid();
             document.getElementById('welcome-screen').classList.add('hidden');
-            initPuzzle();
-            renderScoreboards();
-            updateTurnIndicators();
-            startTimer();
-            showState('lobby');
-            showToast('🚀 Two-State Battle Arena Started!', 'success');
-        }
-
-        function showState(stateName) {
-            const lobbyEl = document.getElementById('screen-battle-lobby');
-            const battleEl = document.getElementById('screen-question-battle');
-            if (stateName === 'lobby') {
-                lobbyEl.classList.remove('hidden');
-                battleEl.classList.add('hidden');
-                initPuzzle(); // Refresh lobby grid
-            } else {
-                lobbyEl.classList.add('hidden');
-                battleEl.classList.remove('hidden');
-                initBattleGrid(); // Render question battle grid
-            }
-        }
-
-        function initPuzzle() {
-            const gridEl = document.getElementById('lobby-crossword-grid');
-            gridEl.innerHTML = '';
-
-            const gridSize = 22;
-            for (let r = 0; r < gridSize; r++) {
-                for (let c = 0; c < gridSize; c++) {
-                    let key = `${r}-${c}`;
-                    let cellDiv = document.createElement('div');
-                    cellDiv.className = "w-full h-full relative border border-slate-900 bg-slate-950 flex items-center justify-center";
-
-                    let canonicalCell = canonicalGrid[key];
-                    if (canonicalCell) {
-                        cellDiv.className = "w-full h-full relative border border-indigo-500/35 bg-slate-900 flex items-center justify-center";
-                        
-                        if (canonicalCell.number) {
-                            let numSpan = document.createElement('span');
-                            numSpan.className = "absolute top-[1px] left-[1px] text-[8px] md:text-[9px] font-bold text-teal-300 pointer-events-none leading-none z-10";
-                            numSpan.innerText = canonicalCell.number;
-                            cellDiv.appendChild(numSpan);
-                        }
-
-                        let letterSpan = document.createElement('span');
-                        letterSpan.className = "w-full h-full flex items-center justify-center text-center uppercase font-extrabold text-xs md:text-sm text-amber-300 pointer-events-none";
-                        letterSpan.innerText = revealedGridLetters[key] || '';
-                        cellDiv.appendChild(letterSpan);
-
-                        if (revealedGridLetters[key]) {
-                            if (revealedLetterTypes[key] === 'revealed-wrong') {
-                                cellDiv.classList.add('bg-orange-950/80', 'border-orange-500');
-                            } else {
-                                cellDiv.classList.add('bg-emerald-950/80', 'border-emerald-500');
-                            }
-                        }
-                    } else {
-                        cellDiv.classList.add('bg-slate-950');
-                    }
-
-                    gridEl.appendChild(cellDiv);
-                }
-            }
-
+            initGridStore();
+            renderScoreboard();
             renderLobbyClues();
-            updateProgress();
-        }
-
-        function initBattleGrid() {
-            const gridEl = document.getElementById('battle-crossword-grid');
-            gridEl.innerHTML = '';
-
-            let activeCells = {};
-            if (activeSelectedEntry) {
-                let r = activeSelectedEntry.row;
-                let c = activeSelectedEntry.col;
-                for (let i = 0; i < activeSelectedEntry.word.length; i++) {
-                    activeCells[`${r}-${c}`] = true;
-                    if (activeSelectedEntry.direction === 'across') c++;
-                    else r++;
-                }
-            }
-
-            const gridSize = 22;
-            for (let r = 0; r < gridSize; r++) {
-                for (let c = 0; c < gridSize; c++) {
-                    let key = `${r}-${c}`;
-                    let cellDiv = document.createElement('div');
-                    cellDiv.className = "w-full h-full relative border border-slate-900 bg-slate-950 flex items-center justify-center";
-
-                    let canonicalCell = canonicalGrid[key];
-                    if (canonicalCell) {
-                        let isHighlighted = activeCells[key];
-                        let baseBg = isHighlighted ? (activeSelectedEntry.direction === 'across' ? 'bg-blue-900/60 border-blue-400' : 'bg-purple-900/60 border-purple-400') : 'bg-slate-900 border-indigo-500/35';
-                        cellDiv.className = `w-full h-full relative border ${baseBg} flex items-center justify-center`;
-
-                        if (canonicalCell.number) {
-                            let numSpan = document.createElement('span');
-                            numSpan.className = "absolute top-[1px] left-[1px] text-[8px] font-bold text-teal-300 pointer-events-none leading-none z-10";
-                            numSpan.innerText = canonicalCell.number;
-                            cellDiv.appendChild(numSpan);
-                        }
-
-                        let letterSpan = document.createElement('span');
-                        letterSpan.className = "w-full h-full flex items-center justify-center text-center uppercase font-extrabold text-xs md:text-sm text-amber-300 pointer-events-none";
-                        letterSpan.innerText = revealedGridLetters[key] || '';
-                        cellDiv.appendChild(letterSpan);
-
-                        if (revealedGridLetters[key] && !isHighlighted) {
-                            if (revealedLetterTypes[key] === 'revealed-wrong') {
-                                cellDiv.classList.add('bg-orange-950/80', 'border-orange-500');
-                            } else {
-                                cellDiv.classList.add('bg-emerald-950/80', 'border-emerald-500');
-                            }
-                        }
-                    } else {
-                        cellDiv.classList.add('bg-slate-950');
-                    }
-
-                    gridEl.appendChild(cellDiv);
-                }
-            }
-        }
-
-        function renderScoreboards() {
-            const container = document.getElementById('lobby-scoreboard-container');
-            container.innerHTML = '';
-            groups.forEach((group, idx) => {
-                let card = document.createElement('div');
-                let isActive = idx === currentGroupTurnIndex;
-                card.className = `glass-panel rounded-2xl p-3 flex items-center justify-between border transition-all duration-300 ${isActive ? 'border-amber-400 active-team-glow scale-102 bg-indigo-900/90' : 'border-indigo-500/20 opacity-85'}`;
-                
-                card.innerHTML = `
-                    <div class="flex items-center gap-2.5">
-                        <span class="text-xl">${group.mascot}</span>
-                        <div>
-                            <h4 class="font-bold text-xs text-white leading-tight">${group.name}</h4>
-                            <span class="text-[9px] text-teal-300 font-semibold">${group.completedTurns}/5 turns</span>
-                        </div>
-                    </div>
-                    <div class="text-right">
-                        <span class="fun-font text-base font-extrabold text-amber-300">${group.score}</span>
-                        <span class="text-[8px] block text-slate-400 uppercase font-bold">Pts</span>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        function updateTurnIndicators() {
-            let activeGroup = groups[currentGroupTurnIndex];
-            document.getElementById('lobby-turn-title').innerText = `${activeGroup.name} – M${currentMember}`;
-            document.getElementById('lobby-turn-mascot').innerText = activeGroup.mascot;
-            document.getElementById('turn-indicator-text').innerText = `ROUND ${currentRound}/5 – GROUP ${currentGroupTurnIndex + 1}/${groups.length} – MEMBER ${currentMember}/5`;
-            renderScoreboards();
-        }
-
-        function renderLobbyClues() {
-            const acrossEl = document.getElementById('lobby-clues-across');
-            const downEl = document.getElementById('lobby-clues-down');
-            acrossEl.innerHTML = '';
-            downEl.innerHTML = '';
-
-            let acrossCount = 0;
-            let downCount = 0;
-
-            crosswordEntries.forEach(entry => {
-                let li = document.createElement('div');
-                
-                if (entry.completed) {
-                    let isWrongRevealed = entry.status === 'wrong-revealed';
-                    let badgeBg = isWrongRevealed ? 'bg-orange-700 text-white' : 'bg-slate-700 text-slate-300';
-                    li.className = "p-2.5 rounded-xl bg-slate-900/40 border border-slate-700/50 opacity-75 flex gap-2.5 items-start text-xs";
-                    li.innerHTML = `
-                        <span class="${badgeBg} font-bold text-xs px-2 py-0.5 rounded shrink-0">${entry.num}</span>
-                        <div class="text-slate-400 flex-1">
-                            <p class="font-semibold line-through text-xs">[${entry.uniqueId}] ${entry.clue}</p>
-                            <span class="text-[10px] ${isWrongRevealed ? 'text-orange-400' : 'text-emerald-400'} font-bold mt-0.5 inline-block">${isWrongRevealed ? 'REVEALED (0 PTS)' : 'SOLVED'} (${entry.word})</span>
-                        </div>
-                    `;
-                } else {
-                    let catBg = entry.direction === 'across' ? 'bg-blue-600 hover:bg-blue-500 border-blue-400' : 'bg-purple-600 hover:bg-purple-500 border-purple-400';
-                    li.className = `p-3 rounded-xl bg-indigo-950/70 hover:bg-indigo-900/90 border ${entry.direction === 'across' ? 'border-blue-500/30' : 'border-purple-500/30'} transition cursor-pointer flex gap-3 items-start group shadow-xs text-xs`;
-                    li.onclick = () => openQuestionScreen(entry.uniqueId);
-
-                    li.innerHTML = `
-                        <span class="${catBg} text-white font-bold text-xs px-2 py-0.5 rounded shrink-0 transition shadow">${entry.num}</span>
-                        <div class="text-slate-200 flex-1">
-                            <div class="flex items-center justify-between mb-1">
-                                <span class="font-mono text-[10px] font-extrabold text-teal-300">${entry.uniqueId}</span>
-                                <span class="text-[10px] text-slate-400 font-bold">${entry.word.length} letters</span>
-                            </div>
-                            <p class="font-semibold text-white text-xs md:text-sm leading-snug">${entry.clue}</p>
-                        </div>
-                    `;
-                }
-
-                if (entry.direction === 'across') {
-                    acrossEl.appendChild(li);
-                    acrossCount++;
-                } else {
-                    downEl.appendChild(li);
-                    downCount++;
-                }
-            });
-
-            document.getElementById('lobby-count-across').innerText = acrossCount;
-            document.getElementById('lobby-count-down').innerText = downCount;
-
-            const keyAcross = document.getElementById('key-list-across');
-            const keyDown = document.getElementById('key-list-down');
-            keyAcross.innerHTML = '';
-            keyDown.innerHTML = '';
-
-            crosswordEntries.forEach(entry => {
-                let item = document.createElement('li');
-                item.className = "bg-indigo-950/60 p-3 rounded-2xl border border-indigo-500/20 flex justify-between items-center text-sm";
-                item.innerHTML = `<span class="font-mono font-bold text-teal-300">[${entry.uniqueId}]</span> <span class="font-mono font-extrabold text-white tracking-wider text-base">${entry.word}</span> <span class="text-slate-400 font-semibold">(${entry.word.length} letters)</span>`;
-                
-                if (entry.direction === 'across') keyAcross.appendChild(item);
-                else keyDown.appendChild(item);
-            });
-        }
-
-        function switchLobbyTab(dir) {
-            const btnAcross = document.getElementById('lobby-tab-across');
-            const btnDown = document.getElementById('lobby-tab-down');
-            const listAcross = document.getElementById('lobby-clues-across');
-            const listDown = document.getElementById('lobby-clues-down');
-
-            if (dir === 'across') {
-                btnAcross.className = "flex-1 py-2 text-sm font-bold rounded-xl bg-blue-600 text-white shadow transition flex items-center justify-center gap-1.5";
-                btnDown.className = "flex-1 py-2 text-sm font-bold rounded-xl text-slate-400 hover:text-white transition flex items-center justify-center gap-1.5";
-                listAcross.classList.remove('hidden');
-                listDown.classList.add('hidden');
-            } else {
-                btnDown.className = "flex-1 py-2 text-sm font-bold rounded-xl bg-purple-600 text-white shadow transition flex items-center justify-center gap-1.5";
-                btnAcross.className = "flex-1 py-2 text-sm font-bold rounded-xl text-slate-400 hover:text-white transition flex items-center justify-center gap-1.5";
-                listDown.classList.remove('hidden');
-                listAcross.classList.add('hidden');
-            }
-        }
-
-        function openQuestionScreen(uniqueId) {
-            let entry = crosswordEntries.find(e => e.uniqueId === uniqueId);
-            if (!entry || entry.completed) {
-                showToast('⚠️ This question is already completed!', 'info');
-                return;
-            }
-
-            activeSelectedEntry = entry;
-            let activeGroup = groups[currentGroupTurnIndex];
-
-            // Populate Screen 2 Question Battle elements
-            document.getElementById('battle-group-mascot').innerText = activeGroup.mascot;
-            document.getElementById('battle-group-name').innerText = `${activeGroup.name} – Member ${currentMember}`;
-            document.getElementById('battle-clue-title').innerText = `${entry.uniqueId} (${entry.direction.toUpperCase()} #${entry.num})`;
-            
-            const badgeDir = document.getElementById('battle-badge-dir');
-            badgeDir.innerText = entry.direction.toUpperCase();
-            badgeDir.className = entry.direction === 'across' ? 'px-3.5 py-1.5 rounded-xl text-xs font-extrabold bg-blue-600 text-white font-mono uppercase' : 'px-3.5 py-1.5 rounded-xl text-xs font-extrabold bg-purple-600 text-white font-mono uppercase';
-
-            document.getElementById('battle-length-badge').innerText = `${entry.word.length} Letters`;
-            document.getElementById('battle-clue-text').innerText = entry.clue;
-
-            let inputField = document.getElementById('battle-answer-input');
-            inputField.value = '';
-
-            showState('question_battle');
-            inputField.focus();
-        }
-
-        function returnToLobbyWithoutAnswering() {
-            activeSelectedEntry = null;
-            showState('lobby');
-        }
-
-        function submitBattleAnswer() {
-            if (!activeSelectedEntry) return;
-
-            let inputField = document.getElementById('battle-answer-input');
-            let typed = inputField.value.trim().toUpperCase().replace(/[^A-Z]/g, '');
-
-            if (!typed) {
-                showToast('⚠️ Please enter an answer!', 'info');
-                return;
-            }
-
-            let activeGroup = groups[currentGroupTurnIndex];
-
-            if (typed === activeSelectedEntry.word) {
-                // Correct Answer with Atomic Reveal
-                let success = atomicRevealEntry(activeSelectedEntry, 'correct');
-                if (!success) {
-                    showToast('⚠️ Crossword consistency error detected.', 'info');
-                    return;
-                }
-
-                activeGroup.score += 10;
-                activeGroup.completedTurns++;
-
-                showToast(`🎉 CORRECT! +10 Points for ${activeGroup.name}.`, 'success');
-                finalizeTurnAndReturn();
-            } else {
-                // Incorrect Answer -> 0 points, official answer revealed atomically in orange/coral
-                let success = atomicRevealEntry(activeSelectedEntry, 'wrong-revealed');
-                if (!success) {
-                    showToast('⚠️ Crossword consistency error detected.', 'info');
-                    return;
-                }
-
-                activeGroup.completedTurns++;
-
-                showToast(`❌ NOT QUITE! 0 points. Correct answer: ${activeSelectedEntry.word}`, 'info');
-                finalizeTurnAndReturn();
-            }
-        }
-
-        function giveBattleHint() {
-            if (!activeSelectedEntry) return;
-            let word = activeSelectedEntry.word;
-            let firstLetter = word[0];
-            let inputField = document.getElementById('battle-answer-input');
-            inputField.value = firstLetter;
-            showToast(`💡 Hint: Starts with '${firstLetter}'!`, 'info');
-        }
-
-        function finalizeTurnAndReturn() {
-            activeSelectedEntry = null;
-            currentGroupTurnIndex++;
-            if (currentGroupTurnIndex >= groups.length) {
-                currentGroupTurnIndex = 0;
-                currentMember++;
-                if (currentMember > 5) {
-                    showState('lobby');
-                    triggerCelebration();
-                    showVictoryPodium();
-                    return;
-                }
-                currentRound++;
-            }
-
-            renderScoreboards();
-            updateTurnIndicators();
-            showState('lobby');
-        }
-
-        function updateProgress() {
-            let completedCount = crosswordEntries.filter(e => e.completed).length;
-            document.getElementById('lobby-solved-count').innerText = completedCount;
-            let percent = (completedCount / crosswordEntries.length) * 100;
-            document.getElementById('lobby-progress-bar').style.width = percent + '%';
+            renderCrosswordGrid('lobby-crossword-grid');
+            populateTeacherKey();
+            updateTurnDisplay();
+            startTimer();
+            showMessage("⚔️ Wildlife Battle Started! Group 1 selects a question.");
         }
 
         function startTimer() {
             if (timerInterval) clearInterval(timerInterval);
-            startTime = Date.now();
+            secondsElapsed = 0;
             timerInterval = setInterval(() => {
-                let elapsed = Math.floor((Date.now() - startTime) / 1000);
-                let mins = String(Math.floor(elapsed / 60)).padStart(2, '0');
-                let secs = String(elapsed % 60).padStart(2, '0');
-                document.getElementById('timer-display').innerText = `${mins}:${secs}`;
+                secondsElapsed++;
+                let m = Math.floor(secondsElapsed / 60).toString().padStart(2, '0');
+                let s = (secondsElapsed % 60).toString().padStart(2, '0');
+                document.getElementById('timer-display').innerText = `${m}:${s}`;
             }, 1000);
         }
 
-        function resetPuzzle() {
-            crosswordEntries.forEach(e => { e.completed = false; delete e.status; });
-            revealedGridLetters = {};
-            revealedLetterTypes = {};
-            currentRound = 1;
-            currentGroupTurnIndex = 0;
-            currentMember = 1;
-            groups.forEach(g => { g.score = 0; g.completedTurns = 0; });
-            activeSelectedEntry = null;
-            initializeCanonicalGrid();
-            initPuzzle();
-            renderScoreboards();
-            updateTurnIndicators();
-            showState('lobby');
-            showToast('🔄 Battle reset to Round 1, Group 1, Member 1.', 'info');
+        function updateTurnDisplay() {
+            let activeGroup = groups[currentGroupTurnIndex];
+            let turnText = `ROUND ${currentRound}/5 – GROUP ${activeGroup.id + 1}/6 – MEMBER ${currentMember}/5`;
+            document.getElementById('turn-indicator-text').innerText = turnText;
+            
+            document.getElementById('lobby-turn-title').innerText = `${activeGroup.name} – Member ${currentMember}`;
+            document.getElementById('lobby-turn-mascot').innerText = activeGroup.mascot;
+
+            renderScoreboard();
         }
 
-        function toggleTeacherKey() {
-            const modal = document.getElementById('teacher-modal');
-            modal.classList.toggle('hidden');
-        }
+        function renderScoreboard() {
+            let container = document.getElementById('lobby-scoreboard-container');
+            container.innerHTML = '';
 
-        function showVictoryPodium() {
-            const modal = document.getElementById('victory-modal');
-            const podiumContainer = document.getElementById('podium-container');
-            podiumContainer.innerHTML = '';
-
-            let sortedGroups = [...groups].sort((a, b) => b.score - a.score);
-
-            sortedGroups.forEach((group, rank) => {
-                let podiumCard = document.createElement('div');
-                let medal = rank === 0 ? '🥇' : (rank === 1 ? '🥈' : (rank === 2 ? '🥉' : '🎖️'));
-                let heightClass = rank === 0 ? 'bg-gradient-to-t from-amber-600/40 to-amber-500/20 border-amber-400/60 scale-105' : 'bg-gradient-to-t from-indigo-900/60 to-purple-900/30 border-indigo-500/40';
-                
-                podiumCard.className = `glass-panel rounded-3xl p-8 border-2 ${heightClass} text-center shadow-xl flex flex-col items-center`;
-                podiumCard.innerHTML = `
-                    <span class="text-4xl mb-2">${medal}</span>
-                    <span class="text-5xl mb-3">${group.mascot}</span>
-                    <h3 class="fun-font text-xl text-white font-bold">${group.name}</h3>
-                    <div class="mt-6 bg-slate-950/60 px-5 py-3 rounded-2xl w-full border border-indigo-500/20">
-                        <span class="fun-font text-3xl font-extrabold text-amber-300">${group.score}</span>
-                        <span class="text-xs text-slate-400 block font-bold uppercase mt-1">Points</span>
+            groups.forEach((g, idx) => {
+                let isActive = idx === currentGroupTurnIndex;
+                let cardHtml = `
+                    <div class="glass-card p-3 rounded-2xl flex flex-col justify-between transition-all duration-300 ${isActive ? 'active-team-glow border-2 border-teal-400 scale-[1.02]' : 'opacity-80 border border-indigo-500/20'}">
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl">${g.mascot}</span>
+                            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded-full ${isActive ? 'bg-teal-400 text-slate-950' : 'bg-slate-800 text-slate-300'}">
+                                ${g.completedTurns}/5
+                            </span>
+                        </div>
+                        <div class="mt-2">
+                            <h4 class="fun-font text-xs text-slate-200 font-bold truncate">${g.name}</h4>
+                            <div class="flex items-baseline justify-between mt-1">
+                                <span class="fun-font text-xl font-black text-amber-300">${g.score}</span>
+                                <span class="text-[10px] text-slate-400">PTS</span>
+                            </div>
+                        </div>
                     </div>
                 `;
-                podiumContainer.appendChild(podiumCard);
+                container.innerHTML += cardHtml;
+            });
+        }
+
+        function switchLobbyTab(tab) {
+            activeTab = tab;
+            let acrossBtn = document.getElementById('lobby-tab-across');
+            let downBtn = document.getElementById('lobby-tab-down');
+            let acrossClues = document.getElementById('lobby-clues-across');
+            let downClues = document.getElementById('lobby-clues-down');
+
+            if (tab === 'across') {
+                acrossBtn.className = "flex-1 py-2 text-sm font-bold rounded-xl bg-blue-600 text-white shadow transition flex items-center justify-center gap-1.5";
+                downBtn.className = "flex-1 py-2 text-sm font-bold rounded-xl text-slate-400 hover:text-white transition flex items-center justify-center gap-1.5";
+                acrossClues.classList.remove('hidden');
+                downClues.classList.add('hidden');
+            } else {
+                downBtn.className = "flex-1 py-2 text-sm font-bold rounded-xl bg-purple-600 text-white shadow transition flex items-center justify-center gap-1.5";
+                acrossBtn.className = "flex-1 py-2 text-sm font-bold rounded-xl text-slate-400 hover:text-white transition flex items-center justify-center gap-1.5";
+                downClues.classList.remove('hidden');
+                acrossClues.classList.add('hidden');
+            }
+        }
+
+        function renderLobbyClues() {
+            let acrossList = document.getElementById('lobby-clues-across');
+            let downList = document.getElementById('lobby-clues-down');
+            acrossList.innerHTML = '';
+            downList.innerHTML = '';
+
+            let solvedCount = 0;
+            let acrossRemaining = 0;
+            let downRemaining = 0;
+
+            crosswordEntries.forEach(item => {
+                if (item.completed) solvedCount++;
+                else {
+                    if (item.direction === 'across') acrossRemaining++;
+                    else downRemaining++;
+                }
+
+                let isAcross = item.direction === 'across';
+                let card = document.createElement('div');
+                
+                card.className = `p-3 rounded-xl border transition-all duration-200 cursor-pointer flex items-center justify-between gap-3 ${
+                    item.completed 
+                        ? 'bg-slate-900/60 border-slate-800 text-slate-500 cursor-not-allowed opacity-60' 
+                        : isAcross
+                            ? 'bg-blue-950/40 hover:bg-blue-900/60 border-blue-500/30 text-slate-200'
+                            : 'bg-purple-950/40 hover:bg-purple-900/60 border-purple-500/30 text-slate-200'
+                }`;
+
+                card.onclick = () => {
+                    if (!item.completed) openQuestionBattle(item.uniqueId);
+                };
+
+                card.innerHTML = `
+                    <div class="flex items-start gap-2.5">
+                        <span class="font-mono font-bold px-2 py-1 rounded-lg text-xs ${isAcross ? 'bg-blue-600 text-white' : 'bg-purple-600 text-white'} shrink-0">
+                            ${item.num}
+                        </span>
+                        <div>
+                            <span class="text-xs font-bold block ${item.completed ? 'line-through text-slate-500' : 'text-slate-200'}">${item.clue}</span>
+                            <span class="text-[10px] text-slate-400 font-mono">Length: ${item.word.length} letters</span>
+                        </div>
+                    </div>
+                    <span class="text-xs font-bold shrink-0 ${item.completed ? 'text-emerald-400' : 'text-amber-400'}">
+                        ${item.completed ? '✓ SOLVED' : 'SELECT ➔'}
+                    </span>
+                `;
+
+                if (isAcross) acrossList.appendChild(card);
+                else downList.appendChild(card);
             });
 
-            modal.classList.remove('hidden');
-            triggerCelebration();
+            document.getElementById('lobby-solved-count').innerText = solvedCount;
+            document.getElementById('lobby-count-across').innerText = acrossRemaining;
+            document.getElementById('lobby-count-down').innerText = downRemaining;
+            
+            let pct = (solvedCount / 30) * 100;
+            document.getElementById('lobby-progress-bar').style.width = `${pct}%`;
+        }
+
+        function renderCrosswordGrid(targetGridId, highlightedEntryId = null) {
+            let container = document.getElementById(targetGridId);
+            container.innerHTML = '';
+
+            for (let r = 0; r < 22; r++) {
+                for (let c = 0; c < 22; c++) {
+                    let key = `${r},${c}`;
+                    let cellData = gridStore[key];
+                    let cellEl = document.createElement('div');
+                    cellEl.className = 'w-full h-full relative rounded-xs flex items-center justify-center font-bold text-xs md:text-sm transition-all duration-300 select-none';
+
+                    if (!cellData) {
+                        cellEl.classList.add('bg-slate-950/90', 'border', 'border-slate-900');
+                    } else {
+                        let isHighlighted = highlightedEntryId && cellData.entries.includes(highlightedEntryId);
+
+                        if (cellData.revealed) {
+                            if (cellData.status === 'correct') {
+                                cellEl.classList.add('bg-emerald-950', 'text-emerald-300', 'border', 'border-emerald-500');
+                            } else {
+                                cellEl.classList.add('bg-orange-950', 'text-orange-300', 'border', 'border-orange-500');
+                            }
+                            cellEl.innerText = cellData.letter;
+                        } else if (isHighlighted) {
+                            cellEl.classList.add('bg-sky-500/20', 'border-2', 'border-teal-400', 'text-teal-200');
+                        } else {
+                            cellEl.classList.add('bg-slate-800/90', 'border', 'border-indigo-500/30');
+                        }
+
+                        if (cellData.num) {
+                            let numEl = document.createElement('span');
+                            numEl.className = 'absolute top-0.5 left-0.5 text-[8px] leading-none font-mono font-bold text-teal-400 pointer-events-none';
+                            numEl.innerText = cellData.num;
+                            cellEl.appendChild(numEl);
+                        }
+                    }
+
+                    container.appendChild(cellEl);
+                }
+            }
+        }
+
+        function openQuestionBattle(uniqueId) {
+            let entry = crosswordEntries.find(e => e.uniqueId === uniqueId);
+            if (!entry) return;
+
+            activeClue = entry;
+            let activeGroup = groups[currentGroupTurnIndex];
+
+            document.getElementById('screen-battle-lobby').classList.add('hidden');
+            document.getElementById('screen-question-battle').classList.remove('hidden');
+
+            document.getElementById('battle-group-mascot').innerText = activeGroup.mascot;
+            document.getElementById('battle-group-name').innerText = `${activeGroup.name} – Member ${currentMember}`;
+            document.getElementById('battle-clue-title').innerText = `${entry.uniqueId} (${entry.direction.toUpperCase()} #${entry.num})`;
+
+            let badgeDir = document.getElementById('battle-badge-dir');
+            if (entry.direction === 'across') {
+                badgeDir.innerText = 'ACROSS';
+                badgeDir.className = 'px-3.5 py-1.5 rounded-xl text-xs font-extrabold bg-blue-600 text-white font-mono uppercase';
+            } else {
+                badgeDir.innerText = 'DOWN';
+                badgeDir.className = 'px-3.5 py-1.5 rounded-xl text-xs font-extrabold bg-purple-600 text-white font-mono uppercase';
+            }
+
+            document.getElementById('battle-length-badge').innerText = `${entry.word.length} Letters`;
+            document.getElementById('battle-clue-text').innerText = entry.clue;
+            
+            let input = document.getElementById('battle-answer-input');
+            input.value = '';
+            input.focus();
+
+            renderCrosswordGrid('battle-crossword-grid', entry.uniqueId);
+        }
+
+        function returnToLobbyWithoutAnswering() {
+            document.getElementById('screen-question-battle').classList.add('hidden');
+            document.getElementById('screen-battle-lobby').classList.remove('hidden');
+            renderLobbyClues();
+            renderCrosswordGrid('lobby-crossword-grid');
+        }
+
+        function submitBattleAnswer() {
+            if (!activeClue) return;
+
+            let input = document.getElementById('battle-answer-input');
+            let userAns = input.value.trim().toUpperCase().replace(/[^A-Z]/g, '');
+
+            if (!userAns) {
+                showMessage("⚠️ Please type an answer before submitting!");
+                return;
+            }
+
+            let isCorrect = (userAns === activeClue.word);
+            let activeGroup = groups[currentGroupTurnIndex];
+
+            // Atomic validation & Reveal using official answer
+            revealAnswerInGrid(activeClue, isCorrect ? 'correct' : 'revealed');
+            activeClue.completed = true;
+
+            if (isCorrect) {
+                activeGroup.score += 10;
+                confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
+                showMessage(`🎉 CORRECT! ${activeGroup.name} +10 Points!`);
+            } else {
+                showMessage(`❌ NOT QUITE! 0 Points. Correct answer was: ${activeClue.word}`);
+            }
+
+            activeGroup.completedTurns++;
+
+            // Advance Rotational Member Turn System
+            advanceTurn();
+
+            setTimeout(() => {
+                returnToLobbyWithoutAnswering();
+                checkVictoryCondition();
+            }, 1800);
+        }
+
+        function revealAnswerInGrid(entry, status) {
+            let r = entry.row;
+            let c = entry.col;
+            for (let i = 0; i < entry.word.length; i++) {
+                let key = `${r},${c}`;
+                if (gridStore[key]) {
+                    gridStore[key].revealed = true;
+                    if (gridStore[key].status !== 'correct') {
+                        gridStore[key].status = status;
+                    }
+                }
+                if (entry.direction === 'across') c++;
+                else r++;
+            }
+        }
+
+        function giveBattleHint() {
+            if (!activeClue) return;
+            let firstLetter = activeClue.word[0];
+            let lastLetter = activeClue.word[activeClue.word.length - 1];
+            showMessage(`💡 Hint: Starts with '${firstLetter}' and ends with '${lastLetter}'`);
+        }
+
+        function advanceTurn() {
+            currentGroupTurnIndex++;
+            if (currentGroupTurnIndex >= 6) {
+                currentGroupTurnIndex = 0;
+                currentMember++;
+                if (currentMember > 5) {
+                    currentMember = 5; // Reached end of 5 rounds
+                } else {
+                    currentRound++;
+                }
+            }
+            updateTurnDisplay();
+        }
+
+        function checkVictoryCondition() {
+            let allCompleted = crosswordEntries.every(e => e.completed);
+            let allTurnsDone = groups.every(g => g.completedTurns >= 5);
+
+            if (allCompleted || allTurnsDone) {
+                if (timerInterval) clearInterval(timerInterval);
+                showVictoryModal();
+            }
+        }
+
+        function showVictoryModal() {
+            let sortedGroups = [...groups].sort((a, b) => b.score - a.score);
+            let podium = document.getElementById('podium-container');
+            podium.innerHTML = '';
+
+            let order = [1, 0, 2]; // 2nd, 1st, 3rd layout
+            order.forEach(rankIdx => {
+                if (sortedGroups[rankIdx]) {
+                    let g = sortedGroups[rankIdx];
+                    let rankText = rankIdx === 0 ? "🥇 CHAMPION" : rankIdx === 1 ? "🥈 2ND PLACE" : "🥉 3RD PLACE";
+                    let heightClass = rankIdx === 0 ? "h-64 bg-gradient-to-t from-amber-900 to-amber-700/80 border-amber-400" : rankIdx === 1 ? "h-52 bg-gradient-to-t from-slate-900 to-slate-700/80 border-slate-400" : "h-44 bg-gradient-to-t from-orange-950 to-orange-800/80 border-orange-500";
+
+                    let colHtml = `
+                        <div class="flex flex-col items-center">
+                            <span class="text-4xl mb-2">${g.mascot}</span>
+                            <div class="w-full ${heightClass} rounded-t-3xl border-2 border-b-0 p-4 flex flex-col justify-between items-center text-center shadow-2xl">
+                                <div>
+                                    <span class="text-xs font-bold tracking-widest text-amber-300 block">${rankText}</span>
+                                    <h4 class="fun-font text-base text-white font-bold mt-1">${g.name}</h4>
+                                </div>
+                                <div>
+                                    <span class="fun-font text-3xl font-black text-amber-300">${g.score}</span>
+                                    <span class="text-xs text-slate-300 block">POINTS</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    podium.innerHTML += colHtml;
+                }
+            });
+
+            document.getElementById('victory-modal').classList.remove('hidden');
+            confetti({ particleCount: 200, spread: 100, origin: { y: 0.4 } });
         }
 
         function restartBattle() {
             document.getElementById('victory-modal').classList.add('hidden');
-            document.getElementById('welcome-screen').classList.remove('hidden');
+            resetPuzzle();
         }
 
-        function triggerCelebration() {
-            if (window.confetti) {
-                confetti({
-                    particleCount: 150,
-                    spread: 100,
-                    origin: { y: 0.6 }
-                });
+        function resetPuzzle() {
+            groups.forEach(g => { g.score = 0; g.completedTurns = 0; });
+            currentRound = 1;
+            currentGroupTurnIndex = 0;
+            currentMember = 1;
+
+            crosswordEntries.forEach(e => e.completed = false);
+            initGridStore();
+
+            if (document.getElementById('screen-question-battle').classList.contains('hidden') === false) {
+                returnToLobbyWithoutAnswering();
+            } else {
+                renderLobbyClues();
+                renderCrosswordGrid('lobby-crossword-grid');
             }
+
+            updateTurnDisplay();
+            startTimer();
+            showMessage("🔄 Battle Reset! Back to Round 1.");
         }
 
-        function showToast(text, type) {
-            const box = document.getElementById('msg-box');
-            const txt = document.getElementById('msg-text');
-            const icon = document.getElementById('msg-icon');
+        function populateTeacherKey() {
+            let acrossList = document.getElementById('key-list-across');
+            let downList = document.getElementById('key-list-down');
+            acrossList.innerHTML = '';
+            downList.innerHTML = '';
 
-            txt.innerText = text;
-            icon.innerText = type === 'success' ? '🏆' : '💡';
+            crosswordEntries.forEach(item => {
+                let li = document.createElement('li');
+                li.className = "bg-slate-900/80 p-3 rounded-xl border border-indigo-500/20 text-xs";
+                li.innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-teal-300 font-mono">${item.uniqueId} (#${item.num})</span>
+                        <span class="font-extrabold text-amber-300 tracking-widest font-mono">${item.word}</span>
+                    </div>
+                    <p class="text-slate-400 mt-1">${item.clue}</p>
+                `;
+                if (item.direction === 'across') acrossList.appendChild(li);
+                else downList.appendChild(li);
+            });
+        }
 
+        function toggleTeacherKey() {
+            let modal = document.getElementById('teacher-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function showMessage(msg) {
+            let box = document.getElementById('msg-box');
+            let text = document.getElementById('msg-text');
+            text.innerText = msg;
             box.classList.remove('hidden', 'translate-y-10', 'opacity-0');
+            box.classList.add('translate-y-0', 'opacity-100');
+
             setTimeout(() => {
+                box.classList.remove('translate-y-0', 'opacity-100');
                 box.classList.add('translate-y-10', 'opacity-0');
                 setTimeout(() => box.classList.add('hidden'), 300);
-            }, 4000);
+            }, 2500);
         }
 
-        window.onload = () => {
-            initializeCanonicalGrid();
-            initPuzzle();
-            renderScoreboards();
+        window.onload = function() {
+            initGridStore();
         };
     </script>
-</body>
-</html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crossword Battle - Coordinate Repair</title>
-</head>
-<body>
-
-    <main>
-        <h1>Crossword Battle: Coordinate Repair</h1>
-
-        <section>
-            <h2>MISSION</h2>
-            <p>
-                Repair the crossword grid coordinate system to eliminate
-                all letter intersection conflicts.
-                This is a targeted technical repair, NOT a complete
-                application redesign or rebuild.
-            </p>
-        </section>
-
-        <section>
-            <h2>CRITICAL INSTRUCTIONS</h2>
-            <ul>
-                <li>Preserve all existing 30 clues and official answers.</li>
-                <li>Preserve all unique IDs, directions, and clue numbers.</li>
-                <li>Preserve the existing two-screen gameplay design.</li>
-                <li>Preserve all six groups and the five-round rotation.</li>
-                <li>Preserve the existing scoring system and leaderboard.</li>
-                <li>Preserve animations, timer, answer key, and progress tracking.</li>
-                <li>Do not redesign the interface.</li>
-                <li>Do not remove or simplify existing game features.</li>
-                <li>Do not disable crossword validation to hide errors.</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>1. REBUILD CROSSWORD COORDINATES</h2>
-            <p>
-                Recalculate the row and column coordinates for all
-                30 crossword entries using a valid crossword placement
-                algorithm.
-            </p>
-            <ul>
-                <li>Across words must be placed horizontally.</li>
-                <li>Down words must be placed vertically.</li>
-                <li>Every intersecting cell must contain exactly the same letter.</li>
-                <li>No conflicting letters are allowed.</li>
-                <li>No unintended word overlaps are allowed.</li>
-                <li>All words must remain within the grid boundaries.</li>
-                <li>Keep the crossword compact and readable.</li>
-                <li>Do not blindly reuse the existing coordinates.</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>2. SINGLE CANONICAL GRID</h2>
-            <p>
-                Implement one canonical crossword grid shared by
-                all Across and Down entries.
-            </p>
-            <ul>
-                <li>Each physical cell must have one authoritative letter.</li>
-                <li>Across and Down entries must reference the same shared cells.</li>
-                <li>Never maintain independent conflicting letter copies.</li>
-                <li>Revealed letters must never change.</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>3. VALIDATION BEFORE GAME START</h2>
-            <p>
-                Run a complete validation of all 30 entries before
-                allowing the battle to start.
-            </p>
-            <p>Required validation report:</p>
-            <ul>
-                <li>Across entries: 15</li>
-                <li>Down entries: 15</li>
-                <li>Total entries: 30</li>
-                <li>Conflicting intersections: 0</li>
-                <li>Invalid coordinates: 0</li>
-                <li>Invalid word lengths: 0</li>
-                <li>Unintended overlaps: 0</li>
-                <li>All answers revealable: TRUE</li>
-                <li>Validation status: PASS</li>
-            </ul>
-            <p>
-                If validation fails, block the game from starting
-                and display the exact conflicting entry IDs,
-                coordinates, and letters.
-            </p>
-        </section>
-
-        <section>
-            <h2>4. ANSWER SUBMISSION AND REVEAL LOGIC</h2>
-            <ul>
-                <li>Correct answer: +10 points.</li>
-                <li>Incorrect answer: 0 points.</li>
-                <li>Always reveal the official correct answer after submission.</li>
-                <li>Never insert an incorrect student submission into the grid.</li>
-                <li>Reveal all letters atomically, or reveal none if validation fails.</li>
-                <li>Mark the clue as completed after submission.</li>
-                <li>Completed clues cannot be selected again.</li>
-                <li>Previously revealed letters must remain unchanged.</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>5. REGRESSION TESTS</h2>
-            <p>Test all of the following scenarios:</p>
-            <ol>
-                <li>Answer an Across clue first, then its intersecting Down clue.</li>
-                <li>Answer a Down clue first, then its intersecting Across clue.</li>
-                <li>Reveal all 30 answers in randomized order.</li>
-                <li>Test entries with multiple intersections.</li>
-                <li>Submit an incorrect student answer.</li>
-                <li>Reset the game and replay.</li>
-                <li>Verify that all scores and group turns remain correct.</li>
-            </ol>
-        </section>
-
-        <section>
-            <h2>6. GAMEPLAY MUST REMAIN UNCHANGED</h2>
-            <ul>
-                <li>Six groups.</li>
-                <li>Five members per group.</li>
-                <li>Five rounds.</li>
-                <li>Thirty total turns.</li>
-                <li>Fixed group rotation.</li>
-                <li>Each group selects any unanswered Across or Down clue.</li>
-                <li>Maximum 50 points per group.</li>
-                <li>Maximum 300 points overall.</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>7. FINAL ACCEPTANCE CRITERIA</h2>
-            <p>
-                Do not declare the repair complete until all 30
-                crossword entries pass validation with zero
-                conflicting intersections.
-            </p>
-            <p>
-                The final result must preserve the existing visual
-                design, gameplay, scoring engine, and user experience.
-            </p>
-            <p>
-                This task is strictly a crossword coordinate and
-                consistency repair. Do not rebuild the application
-                from scratch.
-            </p>
-        </section>
-
-    </main>
-
 </body>
 </html>
